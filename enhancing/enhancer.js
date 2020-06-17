@@ -35,7 +35,13 @@ function fail(item) {
    *    - if enhancement >= 15, durability -= 10
    *    - if enhancement > 16, enhancement -= 1
    */
-  return { ...item };
+  if (!item) return {};
+  const newDurability = item.durability - (item.enhancement >= 15 ? 10 : 5);
+  return {
+    ...item,
+    durability: newDurability < 0 ? 0 : newDurability,
+    enhancement: item.enhancement - (item.enhancement > 16 ? 1 : 0),
+  };
 }
 
 function repair(item) {
@@ -48,5 +54,12 @@ function repair(item) {
 }
 
 function get(item) {
-  return { ...item };
+  return item
+    ? {
+        ...item,
+        name: `${item.enhancement > 0 ? `[+${item.enhancement}] ` : ""}${
+          item.name
+        }`,
+      }
+    : {};
 }
