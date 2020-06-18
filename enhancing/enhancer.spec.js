@@ -7,6 +7,10 @@ const {
   expectedGet,
 } = require("../data");
 
+test("tests are running in watch mode", () => {
+  expect(true).toBe(true);
+});
+
 describe("enhancer", () => {
   describe("repair", () => {
     it("should return something", () => {
@@ -23,6 +27,7 @@ describe("enhancer", () => {
       });
     });
   });
+
   describe("succeed", () => {
     it("should return something", () => {
       expect(succeed()).not.toBeNull;
@@ -41,6 +46,7 @@ describe("enhancer", () => {
       });
     });
   });
+
   describe("fail", () => {
     it("should return something", () => {
       expect(fail()).not.toBeNull;
@@ -56,6 +62,7 @@ describe("enhancer", () => {
       });
     });
   });
+
   describe("get", () => {
     it("should return something", () => {
       expect(get()).not.toBeNull;
